@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            .wide {
+                width: 30%;
+            }
+        </style>
+    </head>
+    <body>
+        <input id="source-field" class="wide"/>
+        <button onclick="convertClicked()">convert to domain -></button>
+        <input id="target-field" class="wide"/>
+        <script>
+            function convertClicked() {
+                var source = document.getElementById("source-field").value;
+                var converted = convertToDomain(source);
+                console.log(source);
+                document.getElementById("target-field").value = converted;
+            }
+
+            function convertToDomain(sourceString) {
+                return sourceString
+                        .replaceAll(/([^A-Za-z0-9]+)/g, "-")
+                        .replaceAll(/^(-)+|(-)+$/g, "")
+                        .toLowerCase();
+            }
+        </script>
+    </body>
+</html>
